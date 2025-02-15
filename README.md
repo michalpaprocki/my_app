@@ -1,6 +1,6 @@
 # MyApp
 
-1. [Building your very own blog using Phoenix Liveview and Markdown](68c22c69eacee052734f66fd06faf8b6d1d561e4)
+1. [Building your very own blog using Phoenix Liveview and Markdown](https://github.com/michalpaprocki/my_app/tree/685d0f43338601fa9da12c2403fa2e2f6cef16d4)
 
 To start your Phoenix server:
 
