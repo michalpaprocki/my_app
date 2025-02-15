@@ -22,8 +22,18 @@ import {Socket} from "phoenix"
 import {LiveSocket} from "phoenix_live_view"
 import topbar from "../vendor/topbar"
 
+let Hooks = {}
+Hooks.HandleCopy = {
+  mounted() {
+    const pre = document.querySelectorAll("pre")
+    pre.forEach(p => {
+      createAndAddCopyButton(p)
+    })
+  }
+}
 let csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content")
 let liveSocket = new LiveSocket("/live", Socket, {
+  hooks: Hooks,
   longPollFallbackMs: 2500,
   params: {_csrf_token: csrfToken}
 })
@@ -42,3 +52,54 @@ liveSocket.connect()
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket
 
+
+const createAndAddCopyButton = (element) => {
+  const article = document.querySelector("article")
+  const button = document.createElement("button")
+  const div = document.createElement("div")
+  const code = element.querySelector("code")
+  
+  div.classList.add("relative")
+  button.classList.add("right-2")
+  button.classList.add("right-2")
+  button.classList.add("text-white")
+  button.classList.add("top-2")
+  button.classList.add("h-8")
+  button.classList.add("w-16")
+  button.classList.add("bg-accent-1")
+  button.classList.add("rounded-md")
+  button.classList.add("font-semibold")
+  button.classList.add("hover:bg-accent-2")
+  button.classList.add("transition")
+  button.classList.add("hover:bg-accent-2")
+  button.classList.add("absolute")
+  button.title = "Copy bellow code"
+  button.innerHTML = "Copy"
+  div.append(button)
+  article.insertBefore(div, element)
+  element.remove()
+  div.append(element)
+  button.addEventListener("click", (event) => copyFunction(event, code))
+
+}
+
+const copyFunction = (event, code) => {
+  if("clipboard" in navigator){
+      const withGt = code.innerHTML.replaceAll("&gt;", ">")
+      const withLt = withGt.replaceAll("&lt;", "<")
+      const withAmp = withLt.replaceAll("&amp", "&")
+      navigator.clipboard.writeText(withAmp)
+      notifyAndCleanUp(event)
+  } else {
+      alert("Sorry, your browser does not support clipboard copy")
+  }
+}
+
+const notifyAndCleanUp = (event) => {
+  setTimeout(()=>{
+    event.target.classList.remove("scale-110")
+    event.target.innerHTML = "Copy"
+  }, 1000)
+  event.target.classList.add("scale-110")
+  event.target.innerHTML = "Copied!"
+}
