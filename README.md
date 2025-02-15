@@ -2,7 +2,8 @@
 
 1. [Building your very own blog using Phoenix Liveview and Markdown](https://github.com/michalpaprocki/my_app/tree/685d0f43338601fa9da12c2403fa2e2f6cef16d4)
 
-2. [Crafting a copy button for Earmark generated markup]
+2. [Crafting a copy button for Earmark generated markup](https://github.com/michalpaprocki/my_app/tree/b4e5a51c810c6bd8765878c64aa142706720894b)
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
