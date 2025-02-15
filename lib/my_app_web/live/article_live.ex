@@ -26,7 +26,7 @@ defmodule MyAppWeb.ArticleLive do
   end
   def render(assigns) do
     ~H"""
-      <article class="prose-pre:z-0 prose max-w-max py-10 prose-code:before:hidden prose-code:after:hidden p-2 prose-h2:my-0 prose-h2:pb-8 prose-h2:pt-20 prose-h3:my-0 prose-h3:pb-8 prose-h3:pt-20">
+      <article id="article" phx-hook="HandleCopy" class="prose-pre:z-0 prose max-w-max py-10 prose-code:before:hidden prose-code:after:hidden p-2 prose-h2:my-0 prose-h2:pb-8 prose-h2:pt-20 prose-h3:my-0 prose-h3:pb-8 prose-h3:pt-20">
         <%= Phoenix.HTML.raw(Earmark.as_html!(@article)) %>
       </article>
     """

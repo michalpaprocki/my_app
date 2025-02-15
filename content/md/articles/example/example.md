@@ -13,3 +13,9 @@ bg: /images/articles/phoenix_blog/phoenix_blog_thumbnail.png
 ## Easy and simple blogging with Phoenix Liveview.
 
 Paragraph with content.
+
+```javascript
+
+some code
+
+```

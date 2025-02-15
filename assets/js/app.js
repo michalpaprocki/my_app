@@ -66,12 +66,11 @@ const createAndAddCopyButton = (element) => {
   button.classList.add("top-2")
   button.classList.add("h-8")
   button.classList.add("w-16")
-  button.classList.add("bg-accent-1")
   button.classList.add("rounded-md")
   button.classList.add("font-semibold")
-  button.classList.add("hover:bg-accent-2")
+  button.classList.add("bg-violet-700")
   button.classList.add("transition")
-  button.classList.add("hover:bg-accent-2")
+  button.classList.add("hover:bg-violet-500")
   button.classList.add("absolute")
   button.title = "Copy bellow code"
   button.innerHTML = "Copy"
